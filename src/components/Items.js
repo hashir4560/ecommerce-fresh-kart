@@ -34,9 +34,9 @@ const Items = () => {
                 <div className={itemsStyles.name}>{item.name}</div>
                 <div className={itemsStyles.weight}>{item.weight}</div>
                 <div className={itemsStyles.price}>
-                  <div className={itemsStyles.current}>₹{item.price}</div>
+                  <div className={itemsStyles.current}>Rs{item.price}</div>
                   {item.was !== item.price ? (
-                    <div className={itemsStyles.was}>₹{item.was}</div>
+                    <div className={itemsStyles.was}>Rs{item.was}</div>
                   ) : null}
                 </div>
                 <div className={itemsStyles.cta}>

@@ -16,9 +16,9 @@ const Popular = ({ title, items }) => {
                 <div className={popularStyles.name}>{item.name}</div>
                 <div className={popularStyles.weight}>{item.weight}</div>
                 <div className={popularStyles.price}>
-                  <div className={popularStyles.current}>₹{item.price}</div>
+                  <div className={popularStyles.current}>Rs{item.price}</div>
                   {item.was !== item.price ? (
-                    <div className={popularStyles.was}>₹{item.was}</div>
+                    <div className={popularStyles.was}>Rs{item.was}</div>
                   ) : null}
                 </div>
                 <div className={popularStyles.cta}>

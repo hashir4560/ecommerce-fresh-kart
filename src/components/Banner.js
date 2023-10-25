@@ -5,14 +5,14 @@ import vegImg from "../images/Vegetables.png";
 import appleImg from "../images/Apple.png";
 import fruitImg from "../images/Fruits.png";
 import beansImg from "../images/Beans.png";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
     <Carousel
       autoPlay={true}
       infiniteLoop={true}
-      interval={3000}
+      interval={2000}
       showThumbs={false}
       showStatus={false}
     >

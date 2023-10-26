@@ -1,9 +1,37 @@
 import cartStyles from "../styles/cart.module.css";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import AppContext from "../services/AppContext";
 import AddItem from "./AddItem";
+import { useNavigate } from "react-router-dom";
 const Cart = () => {
+  const navigate = useNavigate();
   const [state, setState] = useContext(AppContext);
+  const [mrp, setMrp] = useState(0);
+  const [discount, setDiscount] = useState(0);
+  const [total, setTotal] = useState(0);
+
+  const order = () => {
+    let products = [...state.products];
+    for (let product of products) {
+      product.quantity = 0;
+    }
+    setState({ products, cart: [] });
+    navigate("/final");
+  };
+
+  useEffect(() => {
+    let mrp = 0;
+    let disc = 0;
+    let total = 0;
+    for (let item of state.cart) {
+      mrp = mrp + item.quantity * item.price;
+      disc = disc + item.quantity * (item.was - item.price);
+      total = mrp - discount;
+    }
+    setMrp(mrp);
+    setDiscount(disc);
+    setTotal(total);
+  }, [state.cart]);
   return (
     <div className={cartStyles.cartContainer}>
       <div className={cartStyles.heading}>Cart</div>
@@ -37,7 +65,9 @@ const Cart = () => {
                 </div>
               ))}
               <div className={cartStyles.btnContainer}>
-                <button className={cartStyles.orderBtn}>Place Order</button>
+                <button className={cartStyles.orderBtn} onClick={order}>
+                  Place Order
+                </button>
               </div>
             </>
           ) : (
@@ -48,18 +78,27 @@ const Cart = () => {
           <div className={cartStyles.cartSummary}>
             <div className={cartStyles.subHeading}>Summary</div>
             <div className={cartStyles.summary}>
-              <div className={cartStyles.summaryLabel}>MRP</div>
-              <div className={cartStyles.summaryLabel}>Rs500</div>
+              {state.cart.length === 1 ? (
+                <div className={cartStyles.summaryLabel}>
+                  MRP({state.cart.length}) Item
+                </div>
+              ) : (
+                <div className={cartStyles.summaryLabel}>
+                  MRP({state.cart.length}) Items
+                </div>
+              )}
+
+              <div className={cartStyles.summaryLabel}>Rs{mrp}</div>
             </div>
             <div className={cartStyles.summary}>
               <div className={cartStyles.summaryLabel}>Product Discount</div>
               <div className={`${cartStyles.summaryLabel} ${cartStyles.disc}`}>
-                -Rs500
+                -Rs{discount}
               </div>
             </div>
             <div className={`${cartStyles.summary} ${cartStyles.total}`}>
               <div className={cartStyles.summaryLabel}>Total Amount</div>
-              <div className={cartStyles.summaryLabel}>Rs500</div>
+              <div className={cartStyles.summaryLabel}>Rs{total}</div>
             </div>
           </div>
         ) : null}

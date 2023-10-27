@@ -2,21 +2,27 @@ import cartStyles from "../styles/cart.module.css";
 import { useContext, useEffect, useState } from "react";
 import AppContext from "../services/AppContext";
 import AddItem from "./AddItem";
+import AuthContext from "../services/AuthContext";
 import { useNavigate } from "react-router-dom";
 const Cart = () => {
   const navigate = useNavigate();
   const [state, setState] = useContext(AppContext);
+  const [isLoggedIn, setIsLoggedIn] = useContext(AuthContext);
   const [mrp, setMrp] = useState(0);
   const [discount, setDiscount] = useState(0);
   const [total, setTotal] = useState(0);
 
   const order = () => {
-    let products = [...state.products];
-    for (let product of products) {
-      product.quantity = 0;
+    if (isLoggedIn) {
+      let products = [...state.products];
+      for (let product of products) {
+        product.quantity = 0;
+      }
+      setState({ products, cart: [] });
+      navigate("/final");
+    } else {
+      navigate("/login");
     }
-    setState({ products, cart: [] });
-    navigate("/final");
   };
 
   useEffect(() => {

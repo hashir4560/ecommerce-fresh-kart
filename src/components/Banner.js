@@ -6,6 +6,7 @@ import appleImg from "../images/Apple.png";
 import fruitImg from "../images/Fruits.png";
 import beansImg from "../images/Beans.png";
 import { Link } from "react-router-dom";
+import React from "react";
 
 const Banner = () => {
   return (

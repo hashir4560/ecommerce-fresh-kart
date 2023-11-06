@@ -4,13 +4,13 @@ import Items from "./Items";
 import Cart from "./Cart";
 import Final from "./Final";
 import Login from "./Login";
-
+import Register from "./RegisterUser";
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
-
+      <Route path="/register" element={<Register />} />
       <Route path="/home" element={<Home />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="/final" element={<Final />} />

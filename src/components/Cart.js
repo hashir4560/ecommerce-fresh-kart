@@ -77,7 +77,14 @@ const Cart = () => {
               </div>
             </>
           ) : (
-            <div className={cartStyles.noItem}>Your Cart is Empty </div>
+            <div className={cartStyles.centeredContainer}>
+              <div className={cartStyles.noItem}>
+                <b>Your Cart is Empty</b>
+                <p className={cartStyles.emptyCartText}>
+                  Go and select some items to get the order completed.
+                </p>
+              </div>
+            </div>
           )}
         </div>
         {state.cart.length > 0 ? (

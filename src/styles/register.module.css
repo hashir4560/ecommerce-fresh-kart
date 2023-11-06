@@ -1,18 +1,18 @@
-.loginContainer {
+.registerContainer {
     width: 400px;
-    height: 480px;
-    margin: 0px auto;
+    height: 730px;
+    margin: 0 auto;
     border-radius: 5px;
     border: 1px solid #d7d7d7;
     position: relative;
     top: 125px;
+    text-align: center;
   }
   
   .heading {
     font-size: 24px;
     font-weight: bold;
     margin: 40px;
-    text-align: center;
   }
   
   .formContainer {
@@ -20,53 +20,45 @@
   }
   
   .formGroup {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
   
   label {
     display: block;
+    font-size: 18px;
     margin-bottom: 5px;
   }
   
   input {
-    width: 317px;
+    width: 100%;
     height: 35px;
     border-radius: 5px;
     border: 1px solid #d7d7d7;
-    font-size: 20px;
+    font-size: 16px;
     padding: 5px 10px;
   }
   
   .error {
-    font-size: 12px;
+    font-size: 14px;
     color: red;
   }
   
-  .err input {
-    border: 1px solid red;
-  }
-  
-  .loginBtn {
+  .registerBtn {
     padding: 8px 10px;
-    font-size: 16px;
+    font-size: 18px;
     border-radius: 5px;
     border: 2px solid #2a2a2a;
     background-color: #fff;
     color: #2a2a2a;
     width: 100%;
     cursor: pointer;
+    margin-top: 20px;
   }
   
-  .loginBtn:hover {
+  .registerBtn:hover {
     background-color: #2a2a2a;
     color: #fff;
   }
-  .registerLink {
-    text-align: center;
-    display: block; /* Add this property to make it centered */
-    margin-top: 20px;
-    cursor: pointer;
-    color: #2a2a2a;
-    text-decoration: underline;
-  }
+  
+  /* Add styles for the Register link if needed */
   

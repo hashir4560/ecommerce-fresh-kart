@@ -8,8 +8,13 @@
     margin-bottom: 40px;
   }
   
-  .noItem {
-    font-size: 20px;
+ .noItem {
+    text-align: center;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   }
   
   .cart {
@@ -131,4 +136,9 @@
       font-weight: bold;
       border-top: 1px solid #f1f1f1;
       padding-top: 20px;
+  }
+  .emptyCartText{
+    font-size: 18px;
+    color: #333;
+    margin-top: 10px;
   }

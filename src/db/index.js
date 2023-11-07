@@ -30,11 +30,20 @@ const useApi = () => {
     return apiInstance.get("/freshkart/products");
   };
 
+  const updateUserPassword = (email, oldPassword, newPassword) => {
+    return apiInstance.put("/users/update-password", {
+      email,
+      oldPassword,
+      newPassword,
+    });
+  };
+
   return {
     userLogin,
     RegisterUser,
     getItemByType,
     getAllItems,
+    updateUserPassword,
   };
 };
 

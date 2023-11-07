@@ -1,72 +1,78 @@
 .loginContainer {
-    width: 400px;
-    height: 480px;
-    margin: 0px auto;
-    border-radius: 5px;
-    border: 1px solid #d7d7d7;
-    position: relative;
-    top: 125px;
-  }
-  
-  .heading {
-    font-size: 24px;
-    font-weight: bold;
-    margin: 40px;
-    text-align: center;
-  }
-  
-  .formContainer {
-    padding: 30px;
-  }
-  
-  .formGroup {
-    margin-bottom: 30px;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  input {
-    width: 317px;
-    height: 35px;
-    border-radius: 5px;
-    border: 1px solid #d7d7d7;
-    font-size: 20px;
-    padding: 5px 10px;
-  }
-  
-  .error {
-    font-size: 12px;
-    color: red;
-  }
-  
-  .err input {
-    border: 1px solid red;
-  }
-  
-  .loginBtn {
-    padding: 8px 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 2px solid #2a2a2a;
-    background-color: #fff;
-    color: #2a2a2a;
-    width: 100%;
-    cursor: pointer;
-  }
-  
-  .loginBtn:hover {
-    background-color: #2a2a2a;
-    color: #fff;
-  }
-  .registerLink {
-    text-align: center;
-    display: block; /* Add this property to make it centered */
-    margin-top: 20px;
-    cursor: pointer;
-    color: #2a2a2a;
-    text-decoration: underline;
-  }
-  
+  width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid #d7d7d7;
+  text-align: center;
+  margin-top: 125px;
+  background-color: #f8f8f8;
+}
+
+.heading {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.formContainer {
+  padding: 20px;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  height: 35px;
+  border-radius: 5px;
+  border: 1px solid #d7d7d7;
+  font-size: 16px;
+  padding: 5px 10px;
+}
+
+.error {
+  font-size: 12px;
+  color: red;
+}
+
+.err input {
+  border: 1px solid red;
+}
+
+.loginBtn {
+  padding: 8px 10px;
+  font-size: 18px;
+  border-radius: 5px;
+  border: 2px solid #2a2a2a;
+  background-color: #fff;
+  color: #2a2a2a;
+  width: 100%;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.loginBtn:hover {
+  background-color: #2a2a2a;
+  color: #fff;
+}
+.registerLink,
+.changePassword {
+  display: block;
+  margin-top: 20px;
+  cursor: pointer;
+  color: #2a2a2a;
+  text-decoration: underline;
+}
+
+.registerLink:hover,
+.changePassword:hover {
+  color: #fff;
+  background-color: #2a2a2a;
+}

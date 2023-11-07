@@ -115,6 +115,9 @@ const Login = () => {
           <Link to="/register" className={loginStyles.registerLink}>
             Register
           </Link>
+          <Link to="/changepassword" className={loginStyles.changePassword}>
+            Change Password
+          </Link>
         </form>
       </div>
     </div>

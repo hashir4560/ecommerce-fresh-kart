@@ -39,10 +39,6 @@ const Login = () => {
       if (response.status === 200) {
         setIsLoggedIn(true);
         navigate("/home");
-        toast.success("Logged In Successfully", {
-          theme: "colored",
-          autoClose: 3000,
-        });
       } else {
         toast.error("Invalid Credentials", {
           theme: "colored",

@@ -3,7 +3,7 @@ import registerStyles from "../styles/register.module.css";
 import useApi from "../db";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { useNavigate } from "react-router-dom";
 const Register = () => {
   const firstNameRef = useRef();
   const lastNameRef = useRef();
@@ -19,7 +19,7 @@ const Register = () => {
   const [registrationStatus, setRegistrationStatus] = useState(null);
 
   const { RegisterUser } = useApi(); // Assuming you have a RegisterUser function
-
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     let isFormValid = validateForm();
@@ -44,7 +44,9 @@ const Register = () => {
 
         if (response.status === 201) {
           // Registration successful
-          setRegistrationStatus("success");
+          setRegistrationStatus(true);
+          navigate("login");
+
           toast.success("User registered successfully", {
             theme: "colored",
             autoClose: 3000,
@@ -72,6 +74,7 @@ const Register = () => {
       }
     }
   };
+
   const validateForm = () => {
     let isValid = true;
     //  validation logic here and update the error state
@@ -104,7 +107,11 @@ const Register = () => {
     }
     // Confirm password
     if (passwordRef.current.value !== confirmPasswordRef.current.value) {
-      setConfirmPasswordErr("Passwords do not match");
+      setConfirmPasswordErr("Passwords do  not Match");
+      toast.error("Pssword  do not Match", {
+        theme: "colored",
+        autoClose: 2000,
+      });
       isValid = false;
     }
 
@@ -113,6 +120,7 @@ const Register = () => {
 
   return (
     <div className={registerStyles.registerContainer}>
+      <ToastContainer />
       <div className={registerStyles.heading}>Register</div>
       <div className={registerStyles.formContainer}>
         <form onSubmit={handleSubmit}>

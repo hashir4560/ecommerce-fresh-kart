@@ -1,5 +1,4 @@
 import axios from "axios";
-
 const apiInstance = axios.create({
   baseURL: "http://localhost:5000",
 });
@@ -23,9 +22,19 @@ const useApi = () => {
       confirmPassword,
     });
   };
+  const getItemByType = (type) => {
+    return apiInstance.get(`/products $ {type}`);
+  };
+
+  const getAllItems = () => {
+    return apiInstance.get("/freshkart/products");
+  };
+
   return {
     userLogin,
     RegisterUser,
+    getItemByType,
+    getAllItems,
   };
 };
 

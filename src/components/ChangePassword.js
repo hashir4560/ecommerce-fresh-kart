@@ -22,41 +22,103 @@ const ChangePassword = () => {
 
   const { updateUserPassword } = useApi();
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   let isFormValid = validateForm();
+
+  //   if (isFormValid) {
+  //     try {
+  //       const email = emailRef.current.value;
+  //       const oldPassword = oldPasswordRef.current.value;
+  //       const newPassword = newPasswordRef.current.value;
+
+  //       const response = await updateUserPassword(
+  //         email,
+  //         oldPassword,
+  //         newPassword
+  //       );
+
+  //       if (response.status === 200) {
+  //         toast.success(response.data.message, {
+  //           theme: "colored",
+  //           autoClose: 3000,
+  //         });
+  //         navigate("/login");
+  //       } else {
+  //         toast.error(response.data.message, {
+  //           theme: "colored",
+  //           autoClose: 3000,
+  //         });
+  //       }
+  //     } catch (error) {
+  //       console.error(error);
+  //       toast.error("An error occurred. Please try again later.", {
+  //         theme: "colored",
+  //         autoClose: 3000,
+  //       });
+  //     }
+  //   }
+  // };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let isFormValid = validateForm();
+    try {
+      const email = emailRef.current.value;
+      const oldPassword = oldPasswordRef.current.value;
+      const newPassword = newPasswordRef.current.value;
 
-    if (isFormValid) {
-      try {
-        const email = emailRef.current.value;
-        const oldPassword = oldPasswordRef.current.value;
-        const newPassword = newPasswordRef.current.value;
+      const response = await updateUserPassword(
+        email,
+        oldPassword,
+        newPassword
+      );
 
-        const response = await updateUserPassword(
-          email,
-          oldPassword,
-          newPassword
-        );
-
-        if (response.status === 200) {
-          toast.success(response.data.message, {
+      if (response.status === 200) {
+        toast.success("User password updated successfully", {
+          theme: "colored",
+          autoClose: 3000,
+        });
+        navigate("/login");
+      } else if (response.status === 400) {
+        if (response.data.message === "Invalid email.") {
+          toast.error("Invalid email. Please check your email address.", {
             theme: "colored",
             autoClose: 3000,
           });
-          navigate("/login");
+        } else if (response.data.message === "Invalid old password.") {
+          toast.error("Invalid old password. Please check your old password.", {
+            theme: "colored",
+            autoClose: 3000,
+          });
+        } else if (
+          response.data.message === "No changes made to the password"
+        ) {
+          toast.info("No changes made to the password.", {
+            theme: "colored",
+            autoClose: 3000,
+          });
+        } else if (response.data.message === "User not found. Invalid email.") {
+          toast.error("User not found. Invalid email.", {
+            theme: "colored",
+            autoClose: 3000,
+          });
         } else {
           toast.error(response.data.message, {
             theme: "colored",
             autoClose: 3000,
           });
         }
-      } catch (error) {
-        console.error(error);
+      } else if (response.status === 500) {
         toast.error("An error occurred. Please try again later.", {
           theme: "colored",
           autoClose: 3000,
         });
       }
+    } catch (error) {
+      console.error(error);
+      toast.error("An error occurred. Please try again later.", {
+        theme: "colored",
+        autoClose: 3000,
+      });
     }
   };
 

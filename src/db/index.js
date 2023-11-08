@@ -1,3 +1,4 @@
+import { type } from "@testing-library/user-event/dist/type";
 import axios from "axios";
 const apiInstance = axios.create({
   baseURL: "http://localhost:5000",
@@ -37,6 +38,9 @@ const useApi = () => {
       newPassword,
     });
   };
+  const getAllPopularItems = (type, popular) => {
+    return apiInstance.get(`/products/${type}/${popular}`);
+  };
 
   return {
     userLogin,
@@ -44,6 +48,7 @@ const useApi = () => {
     getItemByType,
     getAllItems,
     updateUserPassword,
+    getAllPopularItems,
   };
 };
 
